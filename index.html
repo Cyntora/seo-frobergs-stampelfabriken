@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SEO-analys, Fröbergs och Stämpelfabriken, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f1e0;
+    --bg-soft: #ede5d0;
+    --ink: #1a1f2e;
+    --ink-soft: #4a4e5a;
+    --mute: #8a8676;
+    --line: #d9d1bd;
+    --accent: #7d2329;
+    --accent-soft: #a14a4f;
+    --good: #2f6b4a;
+    --warn: #b07d2a;
+    --bad: #a32424;
+    --paper: #fbf8ee;
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scroll-deck */
+  html { scroll-behavior: smooth; }
+  body { scroll-snap-type: y proximity; }
+  section.deck {
+    scroll-snap-align: start;
+    min-height: 100vh;
+    padding: 80px 7vw 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  /* Nav */
+  nav.topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 64px;
+    background: rgba(246, 241, 224, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 7vw;
+    z-index: 100;
+  }
+  nav.topbar .left { display: flex; align-items: center; gap: 14px; }
+  nav.topbar img.logo { height: 22px; width: auto; display: block; }
+  nav.topbar .divider {
+    width: 1px; height: 22px; background: var(--line);
+  }
+  nav.topbar .for-client {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--ink-soft);
+    letter-spacing: 0.01em;
+  }
+  nav.topbar .meta {
+    font-size: 12px;
+    color: var(--mute);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Typography */
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0 0 0.5em 0;
+  }
+  h1 { font-size: clamp(48px, 7vw, 92px); line-height: 1.02; }
+  h2 { font-size: clamp(36px, 4.4vw, 60px); line-height: 1.08; margin-bottom: 0.4em; }
+  h3 { font-size: clamp(22px, 2vw, 28px); line-height: 1.25; }
+
+  p { margin: 0 0 1em 0; max-width: 70ch; }
+  p.lead { font-size: 19px; line-height: 1.55; color: var(--ink-soft); }
+  .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Hero */
+  section.hero {
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  section.hero .hero-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  section.hero .hero-logo {
+    height: 36px;
+    width: auto;
+    margin-bottom: 60px;
+    display: block;
+  }
+  section.hero h1 .accent {
+    color: var(--accent);
+  }
+  section.hero .hero-meta {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  section.hero .hero-meta div .label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 4px;
+  }
+  section.hero .hero-meta div .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--ink);
+  }
+
+  /* Data tables */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+    margin-top: 24px;
+    background: var(--paper);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .data-table th {
+    text-align: left;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mute);
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+    background: transparent;
+  }
+  .data-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td.num { font-variant-numeric: tabular-nums; }
+  .data-table td.kw { font-weight: 500; }
+  .pos {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .pos.good { background: rgba(47, 107, 74, 0.12); color: var(--good); }
+  .pos.warn { background: rgba(176, 125, 42, 0.14); color: var(--warn); }
+  .pos.bad { background: rgba(163, 36, 36, 0.10); color: var(--bad); }
+  .pos.none { background: var(--bg-soft); color: var(--mute); }
+
+  /* Comparison cards */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .compare-card {
+    background: var(--paper);
+    padding: 28px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .compare-card .site {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 12px;
+  }
+  .compare-card h3 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 30px;
+  }
+  .compare-card .big-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .compare-card .big-num-label {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+  }
+  .compare-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line);
+  }
+  .compare-card li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .compare-card li:last-child { border-bottom: none; }
+  .compare-card li .label { color: var(--ink-soft); }
+  .compare-card li .val { font-variant-numeric: tabular-nums; font-weight: 500; }
+
+  /* Wins / quick-wins boxes */
+  .box-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 28px;
+  }
+  .box {
+    background: var(--paper);
+    padding: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+  .box .tag {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .box h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    margin: 0 0 10px 0;
+  }
+  .box p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  /* Priorities list */
+  .priorities {
+    list-style: none;
+    counter-reset: prio;
+    padding: 0;
+    margin-top: 24px;
+  }
+  .priorities > li {
+    counter-increment: prio;
+    display: grid;
+    grid-template-columns: 60px 1fr 140px;
+    gap: 20px;
+    align-items: start;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .priorities > li::before {
+    content: counter(prio, decimal-leading-zero);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 500;
+  }
+  .priorities > li .body h3 {
+    font-size: 21px;
+    margin: 0 0 6px 0;
+  }
+  .priorities > li .body p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .priorities > li .effort {
+    font-size: 12px;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+    text-align: right;
+  }
+  .priorities > li .effort .effort-val {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--ink);
+    margin-top: 2px;
+  }
+
+  /* Two-column layout */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Pullout numbers */
+  .pullout {
+    background: var(--ink);
+    color: var(--bg);
+    padding: 28px 30px;
+    border-radius: 4px;
+    margin: 24px 0;
+  }
+  .pullout .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--bg);
+  }
+  .pullout .num-label {
+    font-size: 14px;
+    color: rgba(246, 241, 224, 0.7);
+    margin-top: 6px;
+  }
+
+  /* Section footer */
+  footer.deck-foot {
+    margin-top: auto;
+    padding-top: 32px;
+    color: var(--mute);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Last section */
+  section.close {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  section.close h2 { color: var(--bg); }
+  section.close .lead { color: rgba(246, 241, 224, 0.75); }
+  section.close .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(246, 241, 224, 0.18);
+    padding-top: 32px;
+  }
+  section.close .contact-grid .label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(246, 241, 224, 0.55);
+    margin-bottom: 6px;
+  }
+  section.close .contact-grid .val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--bg);
+  }
+  section.close .closing-logo {
+    margin-top: 60px;
+    height: 28px;
+    width: auto;
+    opacity: 0.7;
+  }
+
+  /* Small note style */
+  .note {
+    font-size: 13px;
+    color: var(--mute);
+    margin-top: 14px;
+    line-height: 1.55;
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    section.deck { padding: 100px 6vw 50px; min-height: auto; }
+    h1 { font-size: 44px; }
+    h2 { font-size: 32px; }
+    .compare, .box-grid, .two-col { grid-template-columns: 1fr; }
+    .priorities > li { grid-template-columns: 40px 1fr; }
+    .priorities > li .effort { grid-column: 2; text-align: left; }
+    section.hero .hero-meta { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Print / PDF: 16:9 slides at 1600x900 */
+  @media print {
+    @page { size: 16.667in 9.375in; margin: 0; }
+    nav.topbar { position: absolute; }
+    body { scroll-snap-type: none; background: var(--bg); }
+    section.deck {
+      min-height: 9.375in;
+      height: 9.375in;
+      max-height: 9.375in;
+      width: 16.667in;
+      padding: 0.7in 1in;
+      page-break-after: always;
+      overflow: hidden;
+      box-sizing: border-box;
+      justify-content: center;
+    }
+    section.close { page-break-after: auto; }
+    section.hero .hero-meta { margin-top: 28px; padding-top: 20px; }
+    .pullout { padding: 18px 22px; margin: 14px 0; }
+    .pullout .num { font-size: 48px; }
+    h1 { font-size: 64px; }
+    h2 { font-size: 44px; }
+    p.lead { font-size: 17px; }
+    .data-table { font-size: 13px; margin-top: 18px; }
+    .data-table th, .data-table td { padding: 9px 14px; }
+    .compare-card { padding: 22px; }
+    .compare-card .big-num { font-size: 44px; }
+    .box-grid { gap: 14px; margin-top: 20px; }
+    .box { padding: 18px; }
+    .priorities > li { padding: 16px 0; }
+    .priorities > li::before { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="left">
+    <img class="logo" src="cyntora-logo.svg" alt="Cyntora">
+    <div class="divider"></div>
+    <div class="for-client">SEO-analys för Fröbergs och Stämpelfabriken</div>
+  </div>
+  <div class="meta">Maj 2026</div>
+</nav>
+
+<!-- HERO -->
+<section class="deck hero">
+  <div class="container hero-inner">
+    <img class="hero-logo" src="cyntora-logo.svg" alt="Cyntora">
+    <div class="eyebrow">SEO-analys, maj 2026</div>
+    <h1>Hur Stämpelfabriken kan ta tillbaka <span class="accent">stämpel</span>-termerna.</h1>
+    <p class="lead">En analys av varför Fröbergs rankar högre organiskt på de viktigaste stämpel-sökorden, och hur Stämpelfabriken kan vinna mark på sina egna villkor.</p>
+    <div class="hero-meta">
+      <div>
+        <div class="label">Period</div>
+        <div class="value">Mars till maj 2026</div>
+      </div>
+      <div>
+        <div class="label">Datakällor</div>
+        <div class="value">SE Ranking, Google Search Console</div>
+      </div>
+      <div>
+        <div class="label">Sökord i fokus</div>
+        <div class="value">Stämpel-termer med köpintention</div>
+      </div>
+      <div>
+        <div class="label">Framtagen av</div>
+        <div class="value">Filip Hokeroth, Cyntora</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Sammanfattning</div>
+    <h2>Stämpelfabriken förlorar inte på sidornas teknik. Det är konkurrenssituationen som behöver lösas.</h2>
+    <div class="two-col" style="margin-top: 32px;">
+      <div>
+        <p class="lead">På de viktigaste stämpel-sökorden rankar Fröbergs betydligt högre än Stämpelfabriken. Skillnaden beror inte på att Stämpelfabrikens sidor är sämre byggda. Sidornas titlar, meta-beskrivningar och innehållsdjup är jämförbara.</p>
+        <p class="lead">Det som skiljer är att Fröbergs över åren har samlat ihop fler kommersiella länksignaler och relevanta ankarord. När båda sajter konkurrerar om samma sökord med samma typ av landningssida, väljer Google den sida som har starkast samlad signal. Den planen vi lägger nu går ut på att differentiera Stämpelfabriken så ni inte tävlar mot er själva.</p>
+      </div>
+      <div>
+        <div class="pullout">
+          <div class="num">3 ×</div>
+          <div class="num-label">mer organisk trafik på stämpel-termer hos Fröbergs jämfört med Stämpelfabriken, senaste 90 dagarna</div>
+        </div>
+        <div class="pullout" style="background: var(--accent); color: var(--bg);">
+          <div class="num" style="color: var(--bg);">5</div>
+          <div class="num-label" style="color: rgba(246, 241, 224, 0.85);">stämpel-sökord där Stämpelfabriken redan rankar på position 2 till 7 och kan lyfta in i toppen</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RANK GAP -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Rankning på stämpel-sökord</div>
+    <h2>Så ligger ni mot varandra idag.</h2>
+    <p class="lead">Position 1 är toppen av Googles sökresultat. Position 10 är ungefär botten av första sidan. Allt över 20 ger nästan ingen trafik.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Sökord</th>
+          <th class="num">Sökningar per månad</th>
+          <th>Fröbergs</th>
+          <th>Stämpelfabriken</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="kw">stämpel</td><td class="num">2 400</td><td><span class="pos warn">10</span></td><td><span class="pos bad">65</span></td></tr>
+        <tr><td class="kw">datumstämpel</td><td class="num">320</td><td><span class="pos good">8</span></td><td><span class="pos bad">60</span></td></tr>
+        <tr><td class="kw">brännstämpel</td><td class="num">320</td><td><span class="pos good">2</span></td><td><span class="pos bad">44</span></td></tr>
+        <tr><td class="kw">köpa stämpel</td><td class="num">110</td><td><span class="pos good">3</span></td><td><span class="pos warn">22</span></td></tr>
+        <tr><td class="kw">poststämpel</td><td class="num">110</td><td><span class="pos none">utanför topp 100</span></td><td><span class="pos good">2</span></td></tr>
+        <tr><td class="kw">företagsstämpel</td><td class="num">110</td><td><span class="pos good">4</span></td><td><span class="pos good">8</span></td></tr>
+        <tr><td class="kw">stämpelklocka</td><td class="num">60</td><td><span class="pos good">3</span></td><td><span class="pos bad">26</span></td></tr>
+        <tr><td class="kw">stämpel eget tryck</td><td class="num">40</td><td><span class="pos good">3</span></td><td><span class="pos warn">24</span></td></tr>
+        <tr><td class="kw">nummerstämpel</td><td class="num">20</td><td><span class="pos warn">19</span></td><td><span class="pos bad">54</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note">På 9 av 10 sökord ligger Fröbergs först. På ett sökord, poststämpel, ligger Stämpelfabriken före. Den punkten är viktig och vi återkommer till den.</p>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Domänauktoritet</div>
+    <h2>Sajternas grundauktoritet är jämförbar. Skillnaden ligger i länkvolym och ankartext.</h2>
+    <p class="lead">Domain Authority är ett mått som väger ihop hur många och hur värdefulla externa sidor som länkar till er. Ju högre desto bättre. På den övergripande nivån är ni nästan jämbördiga. Men när vi tittar på vad länkarna består av framträder skillnaden.</p>
+
+    <div class="compare">
+      <div class="compare-card">
+        <div class="site">Fröbergs.se</div>
+        <div class="big-num">48</div>
+        <div class="big-num-label">Domain Authority, av 100</div>
+        <ul>
+          <li><span class="label">Inkommande länkar totalt</span><span class="val">4 524</span></li>
+          <li><span class="label">Refererande domäner</span><span class="val">275</span></li>
+          <li><span class="label">Kvalitetslänkar (dofollow)</span><span class="val">4 360</span></li>
+          <li><span class="label">Toppankare</span><span class="val">"Profilartiklar", "Beställ stämpelur"</span></li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <div class="site">Stampelfabriken.se</div>
+        <div class="big-num">49</div>
+        <div class="big-num-label">Domain Authority, av 100</div>
+        <ul>
+          <li><span class="label">Inkommande länkar totalt</span><span class="val">507</span></li>
+          <li><span class="label">Refererande domäner</span><span class="val">261</span></li>
+          <li><span class="label">Kvalitetslänkar (dofollow)</span><span class="val">253</span></li>
+          <li><span class="label">Toppankare</span><span class="val">"stampelfabriken.se", "Hemsida"</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top: 40px;">
+      <div>
+        <h3>Vad det betyder i praktiken</h3>
+        <p>Båda sajter har ungefär lika många unika domäner som länkar in. Den siffran säger något om bredd och förtroende. Där bredden finns har Stämpelfabriken inte ett problem.</p>
+      </div>
+      <div>
+        <h3>Var skillnaden uppstår</h3>
+        <p>Fröbergs har över tid samlat ihop många fler länkar totalt och, viktigare, fler länkar med kommersiell ankartext. När någon länkar med texten "Beställ stämpelur" eller "Profilartiklar" får Google en tydlig signal om vilken sida som hör hemma på den typen av sökord. Stämpelfabrikens länkar är till stor del bara brand-länkar eller bara URL:en.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION (mjukad version) -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Konkurrenssituationen mellan sajterna</div>
+    <h2>När båda sajter pratar på samma sätt, väljer Google den med starkast bakgrundssignal.</h2>
+    <p class="lead">Era två sajter delar sortiment och kategoristruktur. Det är en styrka i många avseenden. Det innebär samtidigt att Stämpelfabriken och Fröbergs ofta möter samma sökare med liknande budskap. Google gör ett val mellan er och väljer den som ligger starkast i bakgrunden. Som det ser ut nu är det Fröbergs.</p>
+
+    <div class="two-col" style="margin-top: 32px;">
+      <div>
+        <h3>Det här ser vi i datan</h3>
+        <p>När båda sajter rankar på samma URL-struktur, exempelvis kategorisidan för brännstämplar, ligger Fröbergs på position 2 och Stämpelfabriken på position 44. Samma struktur, samma typ av innehåll, helt olika resultat.</p>
+        <p>Det gäller inte bara en sida. Mönstret upprepas på datumstämplar, nummerstämplar, stämpelklocka och flera andra.</p>
+      </div>
+      <div>
+        <h3>Vad det betyder för planen</h3>
+        <p>Vi behöver ge Stämpelfabriken ett eget tydligt utrymme. Inte ersätta det som finns, utan addera djup, perspektiv och teknik som Fröbergs inte har. På de termer där sortimentet är gemensamt vinner Stämpelfabriken när sidan har något extra som Fröbergs saknar.</p>
+        <p>Det kan vara djupare guider, B2B-specifik vinkling, lokalt arv från Linköping, strukturerad data eller fler inkommande länkar med kommersiell ankartext.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WINS (where Stämpel already leads) -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Det här fungerar redan</div>
+    <h2>Där Stämpelfabriken är ensam i kategorin vinner ni.</h2>
+    <p class="lead">På sökord där Fröbergs inte har en konkurrerande kategorisida rankar Stämpelfabriken bra och stabilt. Det säger något viktigt. Stämpelfabriken har bevisligen den auktoritet som krävs för att ranka på stämpel-termer. Det handlar om att skapa läget där ni inte tävlar mot er själva.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Sökord</th>
+          <th>Stämpelfabriken</th>
+          <th>Fröbergs</th>
+          <th>Vad det visar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="kw">poststämpel</td><td><span class="pos good">2</span></td><td><span class="pos none">ej i topp 100</span></td><td>Egen position på topp av sida 1</td></tr>
+        <tr><td class="kw">konteringsstämpel</td><td><span class="pos good">5</span></td><td><span class="pos warn">11</span></td><td>Bättre position, lägre konkurrens</td></tr>
+        <tr><td class="kw">servicestämpel</td><td><span class="pos good">6</span></td><td><span class="pos none">ej rankad</span></td><td>Ägs av Stämpelfabriken</td></tr>
+        <tr><td class="kw">äggstämpel</td><td><span class="pos good">1,8</span></td><td><span class="pos good">1,9</span></td><td>Jämbördiga, niche utan kollision</td></tr>
+        <tr><td class="kw">sigillstämpel egen design</td><td><span class="pos good">2,8</span></td><td><span class="pos warn">5,9</span></td><td>Stark egen position</td></tr>
+      </tbody>
+    </table>
+
+    <p class="note" style="margin-top: 24px;">Slutsatsen är inte att Stämpelfabriken behöver bli en starkare sajt rent generellt. Slutsatsen är att Stämpelfabriken behöver fler tillfällen där sidan står ensam med tydlig vinkling. Det är planens fokus.</p>
+  </div>
+</section>
+
+<!-- QUICK WINS to test -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Kortsiktiga tester</div>
+    <h2>Tre saker vi vill testa först, för att verifiera modellen.</h2>
+    <p class="lead">Innan vi sätter en längre plan vill vi se hur Google reagerar på riktade förändringar. De här tre testerna är valda för att de är snabba att göra, lätta att mäta och säger något konkret om vad som biter.</p>
+
+    <div class="box-grid">
+      <div class="box">
+        <div class="tag">Test 1</div>
+        <h3>Differentierande introtext på tre kategorisidor där ni redan rankar på position 5 till 15.</h3>
+        <p>Vi väljer tre sidor, exempelvis konteringsstämpel, servicestämpel och sigillstämpel. Vi skriver en ny intro på 250 ord per sida som inte finns på Fröbergs och som har en B2B-vinkling. Vi mäter rank och klick efter 30 dagar.</p>
+      </div>
+      <div class="box">
+        <div class="tag">Test 2</div>
+        <h3>Strukturerad data och saknad H1 på samma tre sidor.</h3>
+        <p>Båda era sajter saknar idag H1-rubriker på kategorisidorna och strukturerad data i form av Schema.org-uppmärkning. Det är två tekniska basics som Google läser. Vi implementerar dem på testsidor och mäter förändring i synlighet i sökresultatet.</p>
+      </div>
+      <div class="box">
+        <div class="tag">Test 3</div>
+        <h3>En djup guide som ankarsida för intern länkning.</h3>
+        <p>Vi skapar en längre artikel inom ett område där Stämpelfabriken redan är stark, exempelvis konteringsstämpel. Sidan länkar in i de viktigaste produktkategorierna och fungerar som tematisk auktoritet. Vi mäter både rank för guiden och effekt på de länkade kategorisidorna.</p>
+      </div>
+    </div>
+
+    <p class="note" style="margin-top: 28px;">Efter 30 dagar har vi datapunkter på vad som rör nålen. Då kan vi skala upp det som fungerar och avveckla det som inte gör det.</p>
+  </div>
+</section>
+
+<!-- PRIORITIES (no week plan, just priority list) -->
+<section class="deck">
+  <div class="container">
+    <div class="eyebrow">Prioriteringslista</div>
+    <h2>Så här rangordnar vi arbetet framöver.</h2>
+    <p class="lead">Listan är sorterad efter förväntad effekt per investerad timme. Tester ovan utvärderas innan vi går djupare.</p>
+
+    <ol class="priorities">
+      <li>
+        <div class="body">
+          <h3>Lyft sidor som redan rankar 5 till 15</h3>
+          <p>Tre till fem kategorisidor på Stämpelfabriken som ligger nära toppen men inte är där. Differentierande innehåll och teknisk uppstädning på sidnivå.</p>
+        </div>
+        <div class="effort">Arbete<span class="effort-val">Lågt till medel</span></div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>Tekniska basics på samtliga viktiga sidor</h3>
+          <p>H1, intern länkning och strukturerad data på de stämpel-kategorier som driver mest trafik och har störst potential. Båda sajter gynnas, fokus ligger på Stämpelfabriken.</p>
+        </div>
+        <div class="effort">Arbete<span class="effort-val">Lågt</span></div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>Innehållsdjup och differentiering på Stämpelfabriken</h3>
+          <p>Skriv om de viktigaste stämpel-kategorierna med tydlig egen vinkling. Fackmässigt, B2B-tungt, med användningsexempel och materialfrågor som Fröbergs inte har.</p>
+        </div>
+        <div class="effort">Arbete<span class="effort-val">Medel</span></div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>Pillar-sidor och guide-content kring stämpel-områden</h3>
+          <p>Tematiska sidor som ankarar den interna länkstrukturen. Fungerar som tematisk auktoritet och stöttar produktsidornas rank på sikt.</p>
+        </div>
+        <div class="effort">Arbete<span class="effort-val">Medel</span></div>
+      </li>
+      <li>
+        <div class="body">
+          <h3>Brand- och länkbyggande för Stämpelfabriken</h3>
+          <p>Lokala medier i Linköping, branschdirektorier, leverantörssidor. Målet är att jämna ut den långsiktiga gapet i kommersiella ankarord. Effekt syns över månader, inte veckor.</p>
+        </div>
+        <div class="effort">Arbete<span class="effort-val">Långsiktigt</span></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="deck close">
+  <div class="container">
+    <div class="eyebrow" style="color: rgba(246, 241, 224, 0.7);">Nästa steg</div>
+    <h2>Vi börjar med testerna. När datan finns, vidgar vi planen.</h2>
+    <p class="lead">Den här analysen ligger till grund för det löpande SEO-arbetet inom befintligt avtal. Säg till om ni vill att vi går igenom hela materialet på ett möte, eller om vi sätter igång med test ett till tre direkt.</p>
+
+    <div class="contact-grid">
+      <div>
+        <div class="label">Ansvarig</div>
+        <div class="val">Filip Hokeroth</div>
+      </div>
+      <div>
+        <div class="label">Mejl</div>
+        <div class="val">filip@cyntora.se</div>
+      </div>
+      <div>
+        <div class="label">Hemsida</div>
+        <div class="val">cyntora.se</div>
+      </div>
+    </div>
+
+    <img class="closing-logo" src="cyntora-logo-cream.svg" alt="Cyntora">
+  </div>
+</section>
+
+</body>
+</html>
