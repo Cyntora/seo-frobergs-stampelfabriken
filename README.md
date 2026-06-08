@@ -4,10 +4,10 @@ Single-file HTML-presentation som underlag för SEO-arbete och kundgenomgång.
 
 ## Innehåll
 
-- `index.html` — single-file HTML med inbäddad CSS, scroll-deck. Öppnas direkt i webbläsare.
-- `presentation.pdf` — 16:9 PDF-export som backup.
-- `cyntora-logo.svg` — Cyntoras logotyp (svart).
-- `cyntora-logo-cream.svg` — Cyntoras logotyp (cream, för mörk bakgrund).
+- `index.html`, single-file HTML med inbäddad CSS, scroll-deck. Öppnas direkt i webbläsare.
+- `presentation.pdf`, 16:9 PDF-export som backup.
+- `cyntora-logo.svg`, Cyntoras logotyp (svart).
+- `cyntora-logo-cream.svg`, Cyntoras logotyp (cream, för mörk bakgrund).
 
 ## Tekniska val
 
